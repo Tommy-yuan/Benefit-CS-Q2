@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>解密反孔手提箱</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/idangerous.swiper.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/q2.css">
+    <link rel="stylesheet" type="text/css"
+        media="only screen and (device-width:320px) and (device-height:480px)" href="css/iphone4.css" />
+    <!-- build:js js/jq.min.js -->
+    <script src="js/jquery-1.11.1.js"></script>
+    <script src="js/jpreloader.js"></script>
+    <script src="js/idangerous.swiper.js"></script>
+    <script src="js/spin.min.js"></script>
+    <script src="js/hammer.js"></script>
+    <script src="js/jquery.hammer.js"></script>
+    <script type="text/javascript" src="js/UploadPhoto.js"></script>
+    <script type="text/javascript" src="js/exif.js"></script>
+    <script type="text/javascript" src="js/load-image.all.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/app.js"></script>
+    <!-- endbuild -->
+
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+</head>
+<body>
+
+  <div class="g-doc">
+    <div class="g-bd">
+      <div id="main-swiper" class="swiper-container">
+			 <div class="swiper-wrapper">
+
+          <!-- 首页 -->
+          <div id="slide0" class="swiper-slide"> 
+            <div class="m-screen m-screen0">
+                <div class="g-ct f-dn" >
+                  <div class="g-content">
+
+                          <img src="img/p0_01.png" class="position" id="p0_01" />
+                        <div id="time-h" class="position time">
+                              <span>3</span>
+                        </div>
+                      <div id="time-m" class="position time">
+                          <span>05</span>
+                      </div>
+                      <div id="time-s" class="position time">
+                          <span>20</span>
+                      </div>
+                          <img src="img/p0_02.png" class="position" id="p0_02" />
+                      <div  class="position" id="p0_03"></div>
+                      <div  class="position" id="p0_04"></div>
+
+                          <img src="img/p0_04.png" class="position" id="p0_06" />
+
+
+
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <!-- 视频页 -->
+          <div id="slide1" class="swiper-slide">
+            <div class="m-screen m-screen1">
+                <div class="g-ct f-dn">
+                  <div class="g-content">
+                      <img src="img/p1_01.png" class="position" id="p1_01" />
+                      <img src="img/p1_02.png" class="position" id="p1_02" />
+
+                        <div id="p1_video1" class="p1_video position">
+                        <video src="" controls="controls"></vedio>
+                        </div>
+                      <div id="p1_video2" class="p1_video position">
+                          <video src="" controls="controls"></vedio>
+                      </div>
+                      <div  class="position" id="p1_btn1"></div>
+                      <img src="img/p1_03.png" class="position" id="p1_03" />
+                      <img src="img/p1_04.png" class="position" id="p1_04" />
+                      <img src="img/more.png" class="position" id="p1_05" />
+
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 输入手机号页 -->
+          <div id="slide2" class="swiper-slide swiper-no-swiping">
+            <div class="m-screen m-screen2">
+                <div class="g-ct f-dn">
+                  <div class="g-content">
+
+                      <img src="img/p2_03.png" class="position" id="p2_03" />
+                      <img src="img/p2_04.png" class="position" id="p2_04" />
+                      <div  id="p2_06" class="position">
+                          <input type="text" id="InputPhone"/>
+                      </div>
+                      <div id="p2_item1" hidden="">
+                          <img src="img/p2_05.png" class="position" id="p2_05" />
+                          <div  class="position" id="p2_08"></div>
+                      </div>
+                      <div id="p2_item2" >
+                          <img src="img/errphone.png" class="position" id="p2_05" />
+                          <div  class="position" id="p2_07"></div>
+                      </div>
+
+
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <!-- 开始啦，闹钟页 -->
+          <div id="slide3" class="swiper-slide swiper-no-swiping">
+            <div class="m-screen m-screen3">
+                <div class="g-ct f-dn">
+                  <div class="g-content">
+                      <img src="img/p3_01.png" class="position" id="p3_01" />
+                      <img src="img/p3_02.png" class="position" id="p3_02" />
+                      <img src="img/p2_04.png" class="position" id="p3_03" />
+                      <img src="img/p2_04.png" class="position" id="p3_04" />
+                      <img src="img/p2_04.png" class="position" id="p3_05" />
+                      <img src="img/p2_04.png" class="position" id="p3_06" />
+
+                  </div>
+              </div>
+            </div>
+          </div>
+  			</div>
+  		</div>
+      </div>
+
+      <div id="share-Friend" hidden>
+          <img src="img/share.png" class="position" id="share-icon" />
+      </div>
+
+  </div>
+
+
+  <!-- share bg -->
+  <div class="shareBg f-dn">
+    <img src="img/shareBg.png">
+  </div>
+
+
+
+</body>
+</html>
