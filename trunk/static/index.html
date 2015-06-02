@@ -26,17 +26,31 @@
     <!-- endbuild -->
 
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+      ga('create', 'UA-63391507-2', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+     $(document).bind('touchmove', function(e){
+      e.preventDefault();
+    });
+    </script>
 </head>
 <body>
 
   <div class="g-doc">
     <div class="g-bd">
       <div id="main-swiper" class="swiper-container">
-			 <div class="swiper-wrapper">
+       <div class="swiper-wrapper">
 
           <!-- 首页 -->
-          <div id="slide0" class="swiper-slide"> 
+          <div id="slide0" class="swiper-slide swiper-no-swiping"> 
             <div class="m-screen m-screen0">
                 <div class="g-ct f-dn" >
                   <div class="g-content">
@@ -65,24 +79,60 @@
           </div>
 
           <!-- 视频页 -->
-          <div id="slide1" class="swiper-slide">
+          <div id="slide1" class="swiper-slide swiper-no-swiping">
             <div class="m-screen m-screen1">
-                <div class="g-ct f-dn">
+                <div class="g-ct f-dn animated fadeIn f-ann">
                   <div class="g-content">
                       <img src="img/p1_01.png" class="position" id="p1_01" />
                       <img src="img/p1_02.png" class="position" id="p1_02" />
-
-                        <div id="p1_video1" class="p1_video position">
-                        <video src="" controls="controls"></vedio>
-                        </div>
-                      <div id="p1_video2" class="p1_video position">
-                          <video src="" controls="controls"></vedio>
+                      <div id="video_slide">
+                            <div class="video_slide0">
+                                <div id="p1_video1" class="p1_video position">
+                                  <iframe height="100%" width="100%" src="http://player.youku.com/embed/XOTY2MjgwNTg0" frameborder=0 allowfullscreen></iframe>
+                                </div>
+                                <div id="p1_video2" class="p1_video position">
+                                  <iframe height="100%" width="100%" src="http://player.youku.com/embed/XOTY2MjgxMTM2" frameborder=0 allowfullscreen></iframe>
+                                </div>
+                                <img src="img/video_play.png" class="video1_play f-dn">
+                                <img src="img/video_play.png" class="video2_play f-dn">
+                                <img src="img/slide0_img.png" class="slide0_img">
+                                <img src="img/video1_des.png" class="position" id="video1_des" />
+                                <img src="img/video2_des.png" class="position" id="video2_des" />
+                            </div>
+                            <div class="video_slide1 f-dn">
+                                <div id="p1_video3" class="p1_video position">
+                                  <iframe height="100%" width="100%" src="http://player.youku.com/embed/XOTY2MjgxNDQ0" frameborder=0 allowfullscreen></iframe>
+                                </div>
+                                <div id="p1_video4" class="p1_video position">
+                                  <iframe height="100%" width="100%" src="http://player.youku.com/embed/XOTY2MjgxMzI0" frameborder=0 allowfullscreen></iframe>
+                                </div>
+                                <img src="img/video_play.png" class="video3_play f-dn">
+                                <img src="img/video_play.png" class="video4_play f-dn">
+                                <img src="img/slide1_img.png" class="slide1_img">
+                                <img src="img/video3_des.png" class="position" id="video3_des" />
+                                <img src="img/video4_des.png" class="position" id="video4_des" />
+                            </div>
+                            <div class="video_slide2 f-dn">
+                                <div id="p1_video5" class="p1_video position">
+                                  <iframe height="100%" width="100%" src="http://player.youku.com/embed/XOTY2MjgxNjI0" frameborder=0 allowfullscreen></iframe>
+                                </div>
+                                <div id="p1_video6" class="p1_video position">
+                                  <iframe height="100%" width="100%" src="http://player.youku.com/embed/XOTY2MjgwOTI4" frameborder=0 allowfullscreen></iframe>
+                                </div>
+                                <img src="img/video_play.png" class="video5_play f-dn">
+                                <img src="img/video_play.png" class="video6_play f-dn">
+                                <img src="img/slide2_img.png" class="slide2_img">
+                                <img src="img/p1_03.png" class="position" id="p1_03" />
+                                <img src="img/p1_04.png" class="position" id="p1_04" />
+                            </div>
                       </div>
-                      <div  class="position" id="p1_btn1"></div>
-                      <img src="img/p1_03.png" class="position" id="p1_03" />
-                      <img src="img/p1_04.png" class="position" id="p1_04" />
-                      <img src="img/more.png" class="position" id="p1_05" />
+                      
+                      
 
+                      <div  class="position" id="p1_btn1"></div>
+                      
+                      <img src="img/more.png" class="position animated arrowDown f-anii" id="p1_05" />
+                      <img src="img/arrowUp.png" class="position animated arrowUp f-anii f-dn" id="p1_06">
                   </div>
               </div>
             </div>
@@ -91,7 +141,7 @@
           <!-- 输入手机号页 -->
           <div id="slide2" class="swiper-slide swiper-no-swiping">
             <div class="m-screen m-screen2">
-                <div class="g-ct f-dn">
+                <div class="g-ct f-dn animated fadeIn f-ann">
                   <div class="g-content">
 
                       <img src="img/p2_03.png" class="position" id="p2_03" />
@@ -104,7 +154,7 @@
                           <div  class="position" id="p2_08"></div>
                       </div>
                       <div id="p2_item2" >
-                          <img src="img/errphone.png" class="position" id="p2_05" />
+                          <img src="img/inputPhone_txt.png" class="position" id="p2_05" />
                           <div  class="position" id="p2_07"></div>
                       </div>
 
@@ -117,7 +167,7 @@
           <!-- 开始啦，闹钟页 -->
           <div id="slide3" class="swiper-slide swiper-no-swiping">
             <div class="m-screen m-screen3">
-                <div class="g-ct f-dn">
+                <div class="g-ct f-dn animated fadeIn f-ann">
                   <div class="g-content">
                       <img src="img/p3_01.png" class="position" id="p3_01" />
                       <img src="img/p3_02.png" class="position" id="p3_02" />
@@ -125,13 +175,21 @@
                       <img src="img/p2_04.png" class="position" id="p3_04" />
                       <img src="img/p2_04.png" class="position" id="p3_05" />
                       <img src="img/p2_04.png" class="position" id="p3_06" />
-
+                      <div class="clock_dot">
+                        <img src="img/clock_dot.png">
+                      </div>
+                      <div class="minutes" id="loading_minutes">
+                        <img src="img/minute.png">
+                      </div>
+                      <div class="hours" id="loading_hours">
+                        <img src="img/hour.png">
+                      </div>
                   </div>
               </div>
             </div>
           </div>
-  			</div>
-  		</div>
+        </div>
+      </div>
       </div>
 
       <div id="share-Friend" hidden>
@@ -142,9 +200,9 @@
 
 
   <!-- share bg -->
-  <div class="shareBg f-dn">
+  <!-- <div class="shareBg f-dn">
     <img src="img/shareBg.png">
-  </div>
+  </div> -->
 
 
 

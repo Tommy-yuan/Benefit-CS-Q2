@@ -68,6 +68,20 @@ $(function(){
     // {
     //     wx_config(); 
     // }
+    // 禁止文版被拖动
+    document.body.style.userSelect = 'none';
+    document.body.style.mozUserSelect = 'none';
+    document.body.style.webkitUserSelect = 'none';
+
+    //禁止图片被选中
+    document.onselectstart = new Function('event.returnValue=false;');
+    //禁止图片被拖动
+    document.ondragstart = new Function('event.returnValue=false;');
+
+    $(window).on('touchmove.scroll', function(e) {e.preventDefault();});
+    $(window).on('scroll.scroll',function(e) {e.preventDefault();});
+    $(document).bind('touchmove', function(e) {e.preventDefault();});
+
 
     $(".g-doc").height($(window).height());
 
@@ -92,8 +106,212 @@ $(function(){
         init();
     });
 
+    
+    
+
 
     
+
+    $("#p0_03").click(function(){
+        mySwiper.swipeTo(phonePage);
+        gaTrack('pore2/slide1');
+        gaTrack('pore/toplay');
+    });
+
+    $("#p0_04").click(function(){
+        mySwiper.swipeTo(videoPage);
+        gaTrack('pore2/slide4');
+        gaTrack('pore2/tovideo');
+    });
+
+    $("#p1_btn1").click(function(){
+        mySwiper.swipeTo(phonePage);
+        gaTrack('pore2/slide1');
+    });
+
+    // $('#p1_video1').bind('touchstart',function(e){
+    //   e.preventDefault();
+    //   console.log("touch");
+    //   gaTrack('pore2/video1');
+    // });
+
+
+
+    //提交手机号
+     $("#p2_07").click(function(){
+        mySwiper.swipeTo(clockPage);
+        gaTrack('pore/slide2');
+        gaTrack('pore2/submit');
+        var minuteDeg = -24;
+        var clockAnimate = setInterval(function(){
+            minuteDeg += 6;
+            $("#loading_minutes").css('transform','rotate('+minuteDeg+'deg)');
+            if (minuteDeg >= 0) 
+            {
+                $("#loading_hours").css('transform','rotate(125deg)');
+                // setTimeout(function(){
+                //     init();
+                // },1000);
+                gaTrack('pore/slide3')
+                clearInterval(clockAnimate);
+            }
+        },1000);
+    });
+
+ //滑动视频
+    var videoIndex=0,
+    maxIndex=3,
+    minDistance = 30;
+
+    var tsPoint = {
+        x:0,
+        y:0
+    }
+
+    var tePoint = {
+        x:0,
+        y:0
+    }
+
+    var swpieDistance = function(point1,point2){
+        var distanceX = tePoint.x - tsPoint.x;
+        var distanceY = tePoint.y - tsPoint.y;
+        
+    }
+
+
+    var swipeEvent = function(e){
+        // console.log(e)
+        e.preventDefault();
+        var type = e.type;
+        var touch = e.touches[0];
+        switch(type){
+            case "touchstart":
+                
+                tsPoint.x = touch.pageX
+                tsPoint.y = touch.pageY
+                tePoint.x = touch.pageX
+                tePoint.y = touch.pageY
+                break;
+
+            case "touchend":
+                swipeDirection(tsPoint,tePoint);
+                break;
+            case "touchmove":
+                tePoint.x=touch.pageX
+                tePoint.y=touch.pageY
+                break;
+
+        }
+        
+
+    }
+
+
+    var videoSwiper = document.getElementById("video_slide");
+    videoSwiper.addEventListener("touchstart",swipeEvent);
+    videoSwiper.addEventListener("touchmove",swipeEvent);
+    videoSwiper.addEventListener("touchend",swipeEvent);
+
+    
+
+    var swipeDirection = function(tsPoint,tePoint){
+        var distanceY = tsPoint.y - tePoint.y
+        //wishIndex = wishIndex%maxIndex;
+        console.log(videoIndex);
+        if (distanceY > minDistance || distanceY < minDistance*(-1) ) {
+            $(".video_slide0").removeClass("animated fadeOutUp");
+            $(".video_slide0").removeClass("animated fadeInDown");
+            $(".video_slide1").removeClass("animated fadeInUp");
+            $(".video_slide1").removeClass("animated fadeOutUp");
+            $(".video_slide1").removeClass("animated fadeOutDown");
+            $(".video_slide1").removeClass("animated fadeInDown");
+            $(".video_slide2").removeClass("animated fadeInUp");
+            $(".video_slide2").removeClass("animated fadeOutDown");
+        }
+            
+
+        if(distanceY > minDistance){
+            console.log("往上滑");
+            
+            
+            switch(videoIndex){
+                case 0:    
+                    $(".video_slide2").addClass("f-dn");
+                    $(".video_slide0").addClass("animated fadeOutUp");
+                    $(".video_slide1").removeClass("f-dn");
+                    $(".video_slide1").addClass("animated fadeInUp");
+                    $("#p1_06").removeClass("f-dn");
+                    
+                    videoIndex++;                               
+                    break;
+
+                case 1:
+                    $(".video_slide0").addClass("f-dn");
+                    $(".video_slide1").addClass("animated fadeOutUp");
+                    $(".video_slide2").removeClass("f-dn");
+                    $(".video_slide2").addClass("animated fadeInUp");
+                    $("#p1_05").addClass("f-dn");
+                    
+                    videoIndex++;
+                    
+                    break;
+
+                case 2:
+                    $(".video_slide1").addClass("f-dn");
+                    
+                   
+                    break;
+
+                default:
+                    videoIndex =0;
+                    break;
+
+
+            }
+
+  
+        }else if (distanceY < minDistance*(-1)){
+            console.log("往下滑");            
+
+            switch(videoIndex){
+                case 0:
+                    $(".video_slide1").addClass("f-dn");
+                    $(".video_slide2").addClass("f-dn");
+                    break;
+
+                case 1:
+                    $(".video_slide2").addClass("f-dn");
+                    $(".video_slide1").addClass("animated fadeOutDown");  
+                    $(".video_slide0").removeClass("f-dn");
+                    $(".video_slide0").addClass("animated fadeInDown");
+                    $("#p1_06").addClass("f-dn");
+
+
+                    videoIndex--;
+                    break;
+
+                case 2:
+                    $(".video_slide0").addClass("f-dn");
+                    $(".video_slide2").addClass("animated fadeOutDown");  
+                    $(".video_slide1").removeClass("f-dn");
+                    $(".video_slide1").addClass("animated fadeInDown");
+                    $("#p1_05").removeClass("f-dn");
+                    videoIndex--;
+                    break;
+
+                 default:
+                    
+                    videoIndex = 0;
+                    
+                    break;
+
+            }
+
+           
+        }
+        
+    }
 
 });
 
@@ -103,7 +321,7 @@ function init(){
     $('.g-ct').removeClass("f-dn");
     $(".g-ct").height($(window).height());
     mySwiper = $('#main-swiper').swiper({
-        speed:500,
+        speed:0,
         mode:'vertical',
         noSwiping: true,
         followFinger: false,
@@ -123,6 +341,7 @@ function init(){
         }
     });
     mySwiper.swipeTo(homePage);
+    startCd();
 }
 
 
@@ -275,4 +494,65 @@ function stopProgress(){
   {
     spinner.stop();
   }   
+}
+
+//倒计时
+var timerRunning;
+
+    function showTime(){
+      var today = new Date();
+      var hour = today.getHours();
+      var minute = today.getMinutes();
+      var second = today.getSeconds();
+      var cdHour, cdMin, cdSec;
+
+      if (hour >=16) 
+      {
+          cdHour = zeroFilled(39 - hour);
+      }else{
+          cdHour = zeroFilled(15 - hour);
+      }
+
+
+      cdMin = zeroFilled(59 - minute);
+      cdSec = zeroFilled(59 - second);
+
+      $("#time-h").find("span").html(cdHour);
+      $("#time-m").find("span").html(cdMin);
+      $("#time-s").find("span").html(cdSec);
+
+      timeId = setTimeout(function(){
+          showTime();
+      },1000);
+      if (hour==16&&minute==0&&second==0){
+          return 0; 
+      }
+      timerRunning = true;
+    }
+
+    function stopCd(){
+      if(timerRunning){
+        clearTimeout(timeId);
+        timerRunning = false;
+      }
+    }
+
+    function startCd(){
+      stopCd();
+      showTime();
+    }
+
+
+function zeroFilled(str,num){
+  // console.log(str.toString().length);
+  var str = str.toString();
+  var number = num || 2;
+
+  return str.length < number ? zeroFilled("0"+str,num) : str;
+}
+
+
+function gaTrack(event)
+{
+    ga('send','event','pore2',event,'click');
 }
